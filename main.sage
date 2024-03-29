@@ -1,4 +1,5 @@
 import itertools
+import pickle
 # make a class for parabolic bundles
 # here we start with the simple case of 1-1-1-...-1
 class Parabolic:
@@ -89,17 +90,22 @@ def main():
     list_stable = []
     list_unstable = []
 
-    stable_file = open('stable.txt', 'w')
-    unstable_file = open('unstable.txt', 'w')
+    #stable_file = open('stable.txt', 'w')
+    #unstable_file = open('unstable.txt', 'w')
+
+    stable_file = open('stable.objects', 'wb')
+    unstable_file = open('unstable.objects', 'wb')
 
     #print(bundle_array)
     for bundle in bundle_array:
         if bundle.check_stab():
-            list_stable.append(bundle)
-            stable_file.write(bundle.print())
+            # list_stable.append(bundle)
+            # stable_file.write(bundle.print())
+            pickle.dump(bundle, stable_file)
         else:
-            list_unstable.append(bundle)
-            unstable_file.write(bundle.print())
+            #list_unstable.append(bundle)
+            #unstable_file.write(bundle.print())
+            pickle.dump(bundle, unstable_file)
 
     stable_file.close()
     unstable_file.close()
