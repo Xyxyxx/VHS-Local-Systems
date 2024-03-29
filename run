@@ -1,2 +1,2 @@
-sage main.sage
+sage src/main.sage
 #python main.sage.py
